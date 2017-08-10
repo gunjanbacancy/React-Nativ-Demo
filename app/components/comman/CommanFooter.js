@@ -11,12 +11,31 @@ import {
     StyleSheet,
     Text,
     Image,
-    View
+    View,
+    AsyncStorage,
+    Alert
 } from 'react-native';
 
 import { Actions } from 'react-native-router-flux'; // New code
 
+
+
 export default class CommanFooter extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            //storeval: '123456'
+        }
+    }
+
+
+    componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
+
+
+
+
     render() {
         return (
             <Container>
@@ -30,13 +49,13 @@ export default class CommanFooter extends Component {
                                 Home
                             </Text>
                         </Button>
-                        <Button>
-                            <Text
-                                onPress={() => Actions.aboutscreen()}
-                            >
-                                About Us
-                            </Text>
-                        </Button>
+                        {this.state.name ?
+
+                            <Button><Text onPress={() => Actions.dashboardscreen()}>Dashboard</Text></Button>
+                            :
+                            <Button><Text onPress={() => Actions.aboutscreen()} >About Us</Text></Button>
+                        }
+
                         <Button>
                             <Text
                                 onPress={() => Actions.loginscreen()}
@@ -51,18 +70,29 @@ export default class CommanFooter extends Component {
                                 Sign Up
                             </Text>
                         </Button>
-                        <Button>
-                            <Text
-                                onPress={() => Actions.testscreen()}
-                            >
-                                Test Screen
-                            </Text>
-                        </Button>
+
+                        {this.state.name ?
+
+                            <Button onPress={() => { logoutuser()}}><Text>Logout</Text></Button>
+                            :
+                            <Button><Text onPress={() => Actions.testscreen()} >Test Screen</Text></Button>
+                        }
+
+
                     </FooterTab>
                 </Footer>
             </Container>
         );
+
+        function logoutuser()
+        {
+            alert();
+        }
+
+
     }
+
+
 }
 
 

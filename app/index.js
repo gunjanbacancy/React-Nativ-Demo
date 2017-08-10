@@ -6,6 +6,7 @@ import Login from './screen/Login';
 import About from './screen/About';
 import Signup from './screen/Signup';
 import Test from './screen/Test';
+import Dashboard from './screen/Dashboard';
 
 const App = () => {
     return (
@@ -35,6 +36,11 @@ const App = () => {
                     key="testscreen"
                     component={Test}
                     title="Test Page"
+                />
+                <Scene
+                    key="dashboardscreen"
+                    component={Dashboard}
+                    title="Dashboard Page"
                 />
             </Scene>
         </Router>

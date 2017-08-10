@@ -28,15 +28,13 @@ import CommanFooter from '../components/comman/CommanFooter';
 
 export default class About extends Component {
 
-    /*constructor(props) {
+    constructor(props) {
         super(props)
 
         this.state = {
             storeval: '123456'
         }
-    }*/
-
-    componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
+    }
 
 
     render() {
@@ -45,7 +43,7 @@ export default class About extends Component {
                 <CommanHeader />
                 <Content padder>
 
-                    <Text>Go to About Us Screen :=> {this.state.name}</Text>
+                    <Text>Dashboard Screen :=> {this.state.storeval}</Text>
 
                 </Content>
                 <CommanFooter />
