@@ -10,6 +10,7 @@ import {
     View,
     AsyncStorage
 } from 'react-native';
+
 import { Actions } from 'react-native-router-flux'; // New code
 import Toast from 'react-native-simple-toast';
 
@@ -17,25 +18,29 @@ import CommanHeader from '../components/comman/CommanHeader';
 import CommanFooter from '../components/comman/CommanFooter';
 
 
+/*
+AsyncStorage.getItem('name').then((keyValue) => {
 
-/*AsyncStorage.getItem('name').then((keyValue) => {
-    console.warn(keyValue) //Display key value
+    console.warn(keyValue)
+    //this.setState({"storage": keyValue});
+
 }, (error) => {
-    console.warn(error) //Display error
-});*/
+    console.warn(error)
+});
+*/
 
 
-
-export default class About extends Component {
+export default class Home extends Component {
 
     constructor(props) {
         super(props)
 
         this.state = {
-            storeval: '123456'
+
         }
     }
 
+    componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
 
     render() {
         return (
@@ -43,7 +48,7 @@ export default class About extends Component {
                 <CommanHeader />
                 <Content padder>
 
-                    <Text>Dashboard Screen :=> {this.state.storeval}</Text>
+                    <Text>Dashboard :=> {this.state.name}</Text>
 
                 </Content>
                 <CommanFooter />

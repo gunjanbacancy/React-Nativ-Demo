@@ -28,13 +28,13 @@ import CommanFooter from '../components/comman/CommanFooter';
 
 export default class About extends Component {
 
-    /*constructor(props) {
+    constructor(props) {
         super(props)
 
         this.state = {
-            storeval: '123456'
+
         }
-    }*/
+    }
 
     componentDidMount = () => AsyncStorage.getItem('name').then((value) => this.setState({ 'name': value }))
 

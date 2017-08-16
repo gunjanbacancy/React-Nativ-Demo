@@ -106,6 +106,9 @@ export default class Login extends Component {
                     this.setState({"name": responsedata.user_details[0].id});
 
 
+                    Actions.dashboardscreen();
+
+
                     /*try {
                         AsyncStorage.setItem("xzxzxz", 'x1x1x1');
                     } catch (error) { // log the error

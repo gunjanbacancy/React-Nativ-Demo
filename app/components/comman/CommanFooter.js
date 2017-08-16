@@ -42,40 +42,23 @@ export default class CommanFooter extends Component {
                 <Content />
                 <Footer>
                     <FooterTab>
-                        <Button>
-                            <Text
-                                onPress={() => Actions.homescreen()}
-                            >
-                                Home
-                            </Text>
-                        </Button>
+
+                        <Button><Text onPress={() => Actions.homescreen()}>Home</Text></Button>
+
+                        <Button><Text onPress={() => Actions.aboutscreen()} >About Us</Text></Button>
+
                         {this.state.name ?
 
                             <Button><Text onPress={() => Actions.dashboardscreen()}>Dashboard</Text></Button>
                             :
-                            <Button><Text onPress={() => Actions.aboutscreen()} >About Us</Text></Button>
+                            <Button><Text onPress={() => Actions.signupscreen()}>Sign Up</Text></Button>
                         }
-
-                        <Button>
-                            <Text
-                                onPress={() => Actions.loginscreen()}
-                            >
-                                Login
-                            </Text>
-                        </Button>
-                        <Button>
-                            <Text
-                                onPress={() => Actions.signupscreen()}
-                            >
-                                Sign Up
-                            </Text>
-                        </Button>
 
                         {this.state.name ?
 
                             <Button onPress={() => { logoutuser()}}><Text>Logout</Text></Button>
                             :
-                            <Button><Text onPress={() => Actions.testscreen()} >Test Screen</Text></Button>
+                            <Button><Text onPress={() => Actions.loginscreen()} >Login</Text></Button>
                         }
 
 
@@ -86,7 +69,9 @@ export default class CommanFooter extends Component {
 
         function logoutuser()
         {
-            alert();
+            //alert();
+            AsyncStorage.removeItem('name')
+            Actions.loginscreen();
         }
 
 
